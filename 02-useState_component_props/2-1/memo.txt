@@ -1,0 +1,46 @@
+■ state 관리
+  ● useState() 훅스를 사용한다
+   - state변수는 변경시 화면이 바뀐다
+   - 사용예시
+   import { useState } from 'react';
+   let [n,changeN] = useState(0)
+  ● 주의사항
+   state변수 변경시 state값을 사용하지 말 것
+    잘못된 예시) _changeN(_n + 1)
+    올바른 예시) let x = _n + 1; _changeN(x)
+■ state와 컴포넌트 렌더링
+  ● 렌더링 문제
+   - state값 변경시 해당 스테이트를 사용하는 컴포넌트 전체가 업데이트(렌더링)됨
+  ● 해결방안
+   - state별로 컴포넌트를 별도로 제작한다
+■ useRef
+  ● useRef() 훅스를 사용한다
+  - 선언
+    let refINput = useRef()
+  - 연결
+    <input ref={refInput} type="number"/>
+  - 호출
+    refInput.current
+
+■ 컴포넌트 제작
+  ● 컴포넌트 제작
+   js,jsx 확장자의 파일을 별로도 생성 후, 컴포넌트 이름의 함수를 만들고 export한다(rsc + tab)
+  ● 컴포넌트 호출
+   - import를 이용해 컴퍼넌트 함수를 호출
+   - 원하는 위치에 jsx문법으로 삽입(include)
+■ props
+  ● 부모 컴포넌트의 state 혹은 변수, 함수등을 자식 컴포넌트가 사용할 수 있도록 전달
+  ● 사용법
+   - 부모가 자식에게 전달
+    컴포넌트 호출시 임의의 속성값으로 전달
+    예시) <Comp a = {n} /> : n이라는 부모의 변수를 자식에게 a로 전달해준다
+   - 자식이 부모로부터 전달 받는다
+    함수의 파라미터로 props를 구조분해한 후 사용
+    예시)
+      const CompN1 = ({a}) => {
+        return (
+         <span>
+          {a}
+         </span>
+        );
+      };
