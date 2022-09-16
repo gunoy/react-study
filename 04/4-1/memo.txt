@@ -1,0 +1,14 @@
+만들기
+1. context생성
+  최상위 컴포넌트 밖에서 creatContext 훅스를 이용함
+  const context이름 = creatContext()
+2. context 컨테이너 구조
+  <context이름.Provider value={{a,b,c}}>
+    <컴포넌트1>
+    <컴포넌트2>
+  </context이름.Provider>
+
+사용
+1. context호출
+  컴포넌트 안에서 useContext훅스를
+2. 사용
