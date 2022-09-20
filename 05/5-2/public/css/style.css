@@ -1,0 +1,28 @@
+body {
+  background: #eee;
+}
+
+#root {
+  opacity: 0;
+  transition: all 1s;
+}
+#root.active {
+  opacity: 1;
+}
+#root .comp-plus, #root .comp-minus {
+  opacity: 0;
+  transition: all 1s;
+}
+#root .comp-plus.active, #root .comp-minus.active {
+  opacity: 1;
+}
+
+input.active1 {
+  background: gold;
+  color: #fff;
+}
+
+input.active2 {
+  background: red;
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */
