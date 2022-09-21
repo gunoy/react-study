@@ -3,13 +3,13 @@ import { useContext } from 'react';
 import { AppContext } from '../App';
 
 const CompBtn = ({btnInfo}) => {
-  let {_str,_changeStr} = useContext(AppContext)
+  let {_str,_changeStr,_changeShowError,_changeShowSorry} = useContext(AppContext)
   const fn = ()=>{
     if(btnInfo.type === 'str'){
       let str = _str
       str += btnInfo.char
       if(str.length > 30){
-        alert('입력식이 너무 깁니다')
+        _changeShowSorry(true)
       }else{
         _changeStr(str)
       }
@@ -28,7 +28,7 @@ const CompBtn = ({btnInfo}) => {
         str = fnNew()//str문자열을 계산해서 반환함
         _changeStr(parseInt(str))
       }catch{
-        alert('입력오류')
+        _changeShowSorry(true)
       }
     }  
   }

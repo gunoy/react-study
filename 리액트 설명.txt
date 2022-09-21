@@ -89,10 +89,16 @@ export default App;
 html 절대경로 주소 : %PUBLIC_URL%
 리액트 절대경로 주소 : process.env.PUBLIC_URL
 
+● 업로드 할때 주의사항
+작업이 다 끝나고 업로드할시,
+npm run build하기 전에 package.json파일에 "homepage":"/calc" 추가해서 원하는 파일명을 미리 설정한다
+그 후 npm run build하고 build파일을 htdoc파일에 업로드 한다
+
 
 리액트를 사용하는 이유
 - Single Page App(Web)
 - 컴퍼런트 구성을 자바스크립트로 할 수 있다(호환이 좋다)
 - 페이지 이동 속도 향상
 
+npm install react-router-dom
 

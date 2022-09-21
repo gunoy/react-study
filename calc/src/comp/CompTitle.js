@@ -8,4 +8,4 @@ const CompTitle = () => {
   );
 };
 
-export default CompTitle;
+export default React.memo(CompTitle);//해당 객체와 관련된 변수가 바뀔때만 업데이트됨
