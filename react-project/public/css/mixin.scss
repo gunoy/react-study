@@ -29,3 +29,10 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+@mixin pos-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

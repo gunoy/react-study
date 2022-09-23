@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import {Routes,Route,useLocation} from 'react-router-dom';
 
 import CompHeader from './Comp/CompHeader/CompHeader';
 import Compfooter from './Comp/CompFooter/Compfooter';
@@ -23,6 +23,9 @@ export const AppContext = createContext()
 
 const App = () => {
   const [_stage,_changeStage] = useState('lg')
+  const location = useLocation()
+  const path = location.pathname// = /cpmpany/about
+  const pathArr = path.split('/')// /을 기준으로 쪼갠다
   const fnSetStage = () => {
     if(matchMedia('screen and (min-width:1000px)').matches){
       _changeStage('lg')
@@ -34,49 +37,48 @@ const App = () => {
     fnSetStage()
     window.addEventListener('resize',()=>{
       fnSetStage()
-    })
+    })//resize
+    
   },[])
-  return (
-    <BrowserRouter>
-    <AppContext.Provider value={{_stage}}>
-        <CompHeader/>
-          <Routes>
-          <Route path='/' element={<CompHome/>}/>
+  return ( 
+  <AppContext.Provider value={{_stage,pathArr}}>
+      <CompHeader/>
+        <Routes>
+        <Route path='/' element={<CompHome/>}/>
 
-          <Route path='/company' element={<Comp404/>}/>
-          <Route path='/company' element={<CompSubWrap/>}>
-            <Route path='about' element={<CompAbout/>}/>{/* 중첩 Route에는 /를 쓰면 안됨 */}
-            <Route path='location' element={<CompLocation/>}/>
-          </Route>
+        <Route path='/company' element={<Comp404/>}/>
+        <Route path='/company' element={<CompSubWrap/>}>
+          <Route path='about' element={<CompAbout/>}/>{/* 중첩 Route에는 /를 쓰면 안됨 */}
+          <Route path='location' element={<CompLocation/>}/>
+        </Route>
 
-          <Route path='/biz' element={<Comp404/>}/>
-          <Route path='/biz' element={<CompSubWrap/>}>
-            <Route path='intro' element={<CompBizIntro/>}/>
-            <Route path='area' element={<CompBizArea/>}/>
-          </Route>
+        <Route path='/biz' element={<Comp404/>}/>
+        <Route path='/biz' element={<CompSubWrap/>}>
+          <Route path='intro' element={<CompBizIntro/>}/>
+          <Route path='area' element={<CompBizArea/>}/>
+        </Route>
 
-          <Route path='/product' element={<Comp404/>}/>
-          <Route path='/product' element={<CompSubWrap/>}>
-            <Route path='gallery' element={<CompGallery/>}/>
-          </Route>
+        <Route path='/product' element={<Comp404/>}/>
+        <Route path='/product' element={<CompSubWrap/>}>
+          <Route path='gallery' element={<CompGallery/>}/>
+        </Route>
 
-          <Route path='/online' element={<Comp404/>}/>
-          <Route path='/online' element={<CompSubWrap/>}>
-            <Route path='contact' element={<CompContact/>}/>
-          </Route>
+        <Route path='/online' element={<Comp404/>}/>
+        <Route path='/online' element={<CompSubWrap/>}>
+          <Route path='contact' element={<CompContact/>}/>
+        </Route>
 
-          <Route path='/comunity' element={<Comp404/>}/>
-          <Route path='/comunity' element={<CompSubWrap/>}>
-            <Route path='notice' element={<CompNotice/>}/>
-            <Route path='qna' element={<CompQNA/>}/>
-            <Route path='board' element={<CompBoard/>}/>
-          </Route>
+        <Route path='/comunity' element={<Comp404/>}/>
+        <Route path='/comunity' element={<CompSubWrap/>}>
+          <Route path='notice' element={<CompNotice/>}/>
+          <Route path='qna' element={<CompQNA/>}/>
+          <Route path='board' element={<CompBoard/>}/>
+        </Route>
 
-          <Route path='*' element={<Comp404/>}/>
-        </Routes>
-        <Compfooter/>
-      </AppContext.Provider>
-    </BrowserRouter>
+        <Route path='*' element={<Comp404/>}/>
+      </Routes>
+      <Compfooter/>
+    </AppContext.Provider>
   );
 };
 

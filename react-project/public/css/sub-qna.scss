@@ -1,0 +1,28 @@
+@import 'mixin';
+
+section.sub-qna{
+  padding: 10px;
+  background: #eee;
+  details{
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    &[open] summary{
+      color: var(--main-color);
+    }
+    summary{
+      padding: 7px 0;
+      &::marker{
+        display: none;
+        content: '';
+      }
+      @include icon-font(before,'\f059');
+      &::before{
+        margin-right: 10px;
+      }
+    }
+    p{
+      padding: 7px;
+      background: #fff;
+    }
+  }//
+}//section

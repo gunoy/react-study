@@ -1,11 +1,20 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import CompMenu from '../menu/CompMenu';
 import CompMenuMember from '../menu/CompMenuMember';
+import CompGnbLg from './CompGnbLg';
+import CompGnbSm from './CompGnbSm';
+import CompMbtn from './CompMbtn';
+
 
 const CompHeader = () => {
   let {_stage} = useContext(AppContext)
+  useEffect(()=>{
+
+  },[])
   return (
     <>
       <header>
@@ -15,28 +24,16 @@ const CompHeader = () => {
         <div className="header-bottom">      
           <h1>
             <span className="hidden">리액트프로젝트</span>
-            <a href={process.env.PUBLIC_URL}>
+            <Link to='/'>
               <img src={`${process.env.PUBLIC_URL}/img/icon/logo.png`} alt="" />
-            </a>
+            </Link>
           </h1>
-          {(_stage === 'lg')&&
-            <nav className='gnb gnb-lg'>
-              <CompMenu/>
-            </nav>
-          }
-          {(_stage === 'sm')&&
-          <button className='mbtn'>
-            <i class="bar fa-solid fa-bars-staggered"></i>
-            <i class="close fa-solid fa-xmark"></i>
-            </button>
-          }
+          {(_stage === 'lg')&&<CompGnbLg/>}
+          {(_stage === 'sm')&&<CompGnbSm/>}
+          {(_stage === 'sm')&&<CompMbtn/>}
         </div>
       </header>
-      {(_stage === 'sm')&&
-        <nav className="gnb gnb-sm">
-          <CompMenu/>
-        </nav>
-      }
+
     </>
   );
 };

@@ -1,0 +1,56 @@
+@import 'mixin';
+
+.sub-gallery{
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    li{
+      padding: 10px;
+      box-sizing: border-box;
+      @media screen and (min-width:1000px) {
+        width: 25%;
+      }
+      @media screen and (min-width:500px) and (max-width:1000px) {
+        width: 50%;
+      }
+      @media screen and (max-width:500px) {
+        width: 100%;
+      }
+      div{
+        position: relative;
+        overflow: hidden;
+        padding: 10px;
+        background: #eee;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 15px rgba($color: #000, $alpha: 0.2);
+        &:hover{
+          figure{
+            transform: scale(1.2);
+          }
+          a{
+            opacity: 1;
+          }
+        }
+        figure{
+          img{
+            transition: all 0.5s;
+            width: 100%;
+          }
+        }
+        a{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;left: 0;
+          background: rgba($color: #000, $alpha: 0.7);
+          opacity: 0;
+          transition: all 0.5s;
+          h3{
+            @include pos-center;
+            color: #fff;
+          }
+        }
+      }//div
+    }//li
+  }//ul
+}//.sub-gallery

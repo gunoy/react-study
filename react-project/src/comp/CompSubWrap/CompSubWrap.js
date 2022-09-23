@@ -1,15 +1,17 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
+import CompSnb from './CompSnb';
+import CompSubVisual from './CompSubVisual';
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
 const CompSubWrap = () => {
+  let {pathArr} = useContext(AppContext)
   return (
     <>
-      <section className="sub-visual">
-        서브비주얼
-      </section>
-      <aside className='sub-sidebar'>
-        사이드바
-      </aside>
+      {pathArr[2]}
+      <CompSubVisual/>
+      <CompSnb/>
       <main className='sub-content'>
         <Outlet/>
       </main>
